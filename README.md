@@ -20,12 +20,12 @@ Responsive ve modern bir admin panel şablonu. Türkçe dil desteği, kolapsibil
 ![Dashboard](./screenshots/dashboard.png)
 
 ### Düzenleme Dialog'u
+![Edit Modal](./screenshots/edit-dialog.png)
+
 Sipariş düzenleme formunun açıldığı modal dialog:
 - Sipariş bilgilerini düzenle
 - Form doğrulaması
 - Kaydet/İptal seçenekleri
-
-*Ekran görüntüsü eklemek için: `screenshots/edit-modal.png` dosyasını ekleyin*
 
 ### Silme Onayı Dialog'u
 Siparişi silmek için onay dialog'u:
