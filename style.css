@@ -38,7 +38,8 @@ body {
 }
 
 .sidebar.collapsed {
-    width: 70px;
+    width: 0;
+    overflow: hidden;
 }
 
 .sidebar.collapsed .sidebar-header h2,
@@ -49,7 +50,8 @@ body {
 
 .sidebar.collapsed .sidebar-menu a {
     justify-content: center;
-    padding: 15px;
+    padding: 12px;
+    margin: 0;
 }
 
 .sidebar.collapsed .sidebar-menu i {
@@ -61,8 +63,12 @@ body {
     display: none;
 }
 
+.sidebar.collapsed .sidebar-menu .submenu {
+    display: none;
+}
+
 .sidebar-header {
-    padding: 25px 20px;
+    padding: 15px 20px;
     text-align: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
     background: rgba(0, 0, 0, 0.1);
@@ -198,7 +204,42 @@ body {
 }
 
 .topbar.sidebar-collapsed {
-    left: 70px;
+    left: 0px;
+}
+
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Language Selector */
+.language-selector {
+    display: flex;
+    align-items: center;
+}
+
+.language-dropdown {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: white;
+    color: var(--dark);
+    font-size: 0.9rem;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.language-dropdown:hover {
+    border-color: var(--primary);
+    background-color: rgba(67, 97, 238, 0.05);
+}
+
+.language-dropdown:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
 }
 
 .toggle-btn {
@@ -285,15 +326,15 @@ body {
 .main-content {
     flex: 1;
     margin-left: 250px;
-    margin-top: 50px;
+    margin-top: 30px;
     padding: 30px;
     transition: all 0.3s ease;
     width: calc(100% - 250px);
 }
 
 .main-content.sidebar-collapsed {
-    margin-left: 70px;
-    width: calc(100% - 70px);
+    margin-left: 0px;
+    width: calc(100% - 0px);
 }
 
 .page-header {
@@ -420,6 +461,16 @@ table th {
     font-size: 0.8rem;
 }
 
+/* Table Row Highlight Animation */
+table tbody tr.highlight-update {
+    background-color: rgba(76, 201, 240, 0.3) !important;
+    transition: background-color 0.3s ease;
+}
+
+table tbody tr.highlight-update:hover {
+    background-color: rgba(76, 201, 240, 0.3) !important;
+}
+
 /* Action Buttons */
 .btn-edit,
 .btn-delete {
@@ -464,9 +515,11 @@ table th {
 .status {
     display: inline-block;
     padding: 5px 10px;
-    border-radius: 20px;
+    border-radius: 10px;
     font-size: 0.7rem;
     font-weight: 500;
+    min-width: 85px;
+    text-align: center;
 }
 
 .status.active {
@@ -477,6 +530,10 @@ table th {
 .status.pending {
     background-color: rgba(248, 150, 30, 0.2);
     color: var(--warning);
+}
+.status.cancelled {
+    background-color: var(--danger);
+    color: var(--light);
 }
 
 .activity-list {
@@ -569,6 +626,22 @@ table th {
         display: block;
     }
 
+    /* Mobile sidebar overlay backdrop */
+    .sidebar-backdrop {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
+
+    body.sidebar-open .sidebar-backdrop {
+        display: block;
+    }
+
     .sidebar {
         width: 250px;
         transform: translateX(-100%);
@@ -576,10 +649,38 @@ table th {
         position: fixed;
         top: 0;
         left: 0;
+        z-index: 1000;
+        transition: transform 0.3s ease;
     }
 
-    .sidebar.active {
+    .sidebar.active,
+    .sidebar.collapsed {
+        transform: translateX(-100%);
+    }
+
+    /* Show sidebar on mobile when toggle is activated */
+    body.sidebar-open .sidebar {
         transform: translateX(0);
+    }
+
+    /* Mobile sidebar - show text and icons, full width */
+    .sidebar-header h2,
+    .sidebar-header p {
+        display: block !important;
+    }
+
+    .sidebar-menu span {
+        display: inline !important;
+    }
+
+    .sidebar-menu a {
+        justify-content: flex-start;
+        padding: 14px 20px;
+    }
+
+    .sidebar-menu i {
+        margin-right: 12px;
+        font-size: 1.1rem;
     }
 
     .topbar {
@@ -587,6 +688,11 @@ table th {
         right: 0;
         height: 60px;
         padding: 0 15px;
+        z-index: 998;
+    }
+
+    .topbar.sidebar-collapsed {
+        left: 0;
     }
 
     .main-content {
@@ -594,6 +700,12 @@ table th {
         margin-top: 60px;
         width: 100%;
         padding: 15px;
+        z-index: 1;
+    }
+
+    .main-content.sidebar-collapsed {
+        margin-left: 0;
+        width: 100%;
     }
 
     .page-header h1 {

@@ -11,49 +11,52 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Mobile Sidebar Backdrop -->
+    <div id="sidebarBackdrop" class="sidebar-backdrop"></div>
+
     <!-- Sidebar -->
     <div class="sidebar">
         <div class="sidebar-header">
-            <h2>Admin Paneli</h2>
-            <p>Yönetim Sistemi</p>
+            <h2 data-i18n="admin_panel">Admin Paneli</h2>
+            <p data-i18n="management_system">Yönetim Sistemi</p>
         </div>
         <div class="sidebar-menu">
             <ul>
-                <li><a href="#" class="active"><i class="fas fa-home"></i> <span>Dashboard</span></a></li>
+                <li><a href="#" class="active"><i class="fas fa-home"></i> <span data-i18n="dashboard">Anasayfa</span></a></li>
                 <li>
-                    <a href="#" class="menu-toggle"><i class="fas fa-users"></i> <span>Kullanıcılar</span><i class="fas fa-chevron-down chevron"></i></a>
+                    <a href="#" class="menu-toggle"><i class="fas fa-users"></i> <span data-i18n="users">Kullanıcılar</span><i class="fas fa-chevron-down chevron"></i></a>
                     <ul class="submenu">
-                        <li><a href="#"><i class="fas fa-list"></i> <span>Kullanıcı Listesi</span></a></li>
-                        <li><a href="#"><i class="fas fa-user-plus"></i> <span>Yeni Kullanıcı</span></a></li>
-                        <li><a href="#"><i class="fas fa-user-check"></i> <span>Onay Bekleyenler</span></a></li>
+                        <li><a href="#"><i class="fas fa-list"></i> <span data-i18n="user_list">Kullanıcı Listesi</span></a></li>
+                        <li><a href="#"><i class="fas fa-user-plus"></i> <span data-i18n="new_user">Yeni Kullanıcı</span></a></li>
+                        <li><a href="#"><i class="fas fa-user-check"></i> <span data-i18n="pending_approval">Onay Bekleyenler</span></a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#" class="menu-toggle"><i class="fas fa-shopping-cart"></i> <span>Siparişler</span><i class="fas fa-chevron-down chevron"></i></a>
+                    <a href="#" class="menu-toggle"><i class="fas fa-shopping-cart"></i> <span data-i18n="orders">Siparişler</span><i class="fas fa-chevron-down chevron"></i></a>
                     <ul class="submenu">
-                        <li><a href="#"><i class="fas fa-boxes"></i> <span>Tüm Siparişler</span></a></li>
-                        <li><a href="#"><i class="fas fa-truck"></i> <span>Kargo Takibi</span></a></li>
-                        <li><a href="#"><i class="fas fa-undo"></i> <span>İadeler</span></a></li>
+                        <li><a href="#"><i class="fas fa-boxes"></i> <span data-i18n="all_orders">Tüm Siparişler</span></a></li>
+                        <li><a href="#"><i class="fas fa-truck"></i> <span data-i18n="shipping_tracking">Kargo Takibi</span></a></li>
+                        <li><a href="#"><i class="fas fa-undo"></i> <span data-i18n="returns">İadeler</span></a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#" class="menu-toggle"><i class="fas fa-chart-bar"></i> <span>Analitik</span><i class="fas fa-chevron-down chevron"></i></a>
+                    <a href="#" class="menu-toggle"><i class="fas fa-chart-bar"></i> <span data-i18n="analytics">Analitik</span><i class="fas fa-chevron-down chevron"></i></a>
                     <ul class="submenu">
-                        <li><a href="#"><i class="fas fa-chart-line"></i> <span>Satış Raporu</span></a></li>
-                        <li><a href="#"><i class="fas fa-chart-pie"></i> <span>Kategori Analizi</span></a></li>
-                        <li><a href="#"><i class="fas fa-users-stats"></i> <span>Müşteri İstatistikleri</span></a></li>
+                        <li><a href="#"><i class="fas fa-chart-line"></i> <span data-i18n="sales_report">Satış Raporu</span></a></li>
+                        <li><a href="#"><i class="fas fa-chart-pie"></i> <span data-i18n="category_analysis">Kategori Analizi</span></a></li>
+                        <li><a href="#"><i class="fas fa-users-stats"></i> <span data-i18n="customer_stats">Müşteri İstatistikleri</span></a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#" class="menu-toggle"><i class="fas fa-cog"></i> <span>Ayarlar</span><i class="fas fa-chevron-down chevron"></i></a>
+                    <a href="#" class="menu-toggle"><i class="fas fa-cog"></i> <span data-i18n="settings">Ayarlar</span><i class="fas fa-chevron-down chevron"></i></a>
                     <ul class="submenu">
-                        <li><a href="#"><i class="fas fa-sliders-h"></i> <span>Sistem Ayarları</span></a></li>
-                        <li><a href="#"><i class="fas fa-lock"></i> <span>Güvenlik</span></a></li>
-                        <li><a href="#"><i class="fas fa-envelope"></i> <span>E-posta Ayarları</span></a></li>
-                        <li><a href="#"><i class="fas fa-database"></i> <span>Yedekleme</span></a></li>
+                        <li><a href="#"><i class="fas fa-sliders-h"></i> <span data-i18n="system_settings">Sistem Ayarları</span></a></li>
+                        <li><a href="#"><i class="fas fa-lock"></i> <span data-i18n="security">Güvenlik</span></a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> <span data-i18n="email_settings">E-posta Ayarları</span></a></li>
+                        <li><a href="#"><i class="fas fa-database"></i> <span data-i18n="backup">Yedekleme</span></a></li>
                     </ul>
                 </li>
-                <li><a href="#"><i class="fas fa-question-circle"></i> <span>Yardım</span></a></li>
+                <li><a href="#"><i class="fas fa-question-circle"></i> <span data-i18n="help">Yardım</span></a></li>
             </ul>
         </div>
     </div>
@@ -63,30 +66,39 @@
         <button class="toggle-btn" id="toggleSidebar">
             <i class="fas fa-bars"></i>
         </button>
-        <div class="user-menu" id="userMenu">
-            <div class="user-info">
-                <div class="user-avatar">MA</div>
-                <div class="user-name">Mehmet Aydın</div>
-                <i class="fas fa-chevron-down"></i>
+        <div class="topbar-right">
+            <!-- Language Selector -->
+            <div class="language-selector">
+                <select id="languageSelect" class="language-dropdown">
+                    <option value="tr">Türkçe</option>
+                    <option value="en">English</option>
+                </select>
             </div>
-            <div class="dropdown-menu" id="dropdownMenu">
-                <a href="#"><i class="fas fa-user"></i> Profilim</a>
-                <a href="#"><i class="fas fa-cog"></i> Ayarlar</a>
-                <a href="#"><i class="fas fa-bell"></i> Bildirimler</a>
-                <a href="#"><i class="fas fa-sign-out-alt"></i> Çıkış Yap</a>
+            <div class="user-menu" id="userMenu">
+                <div class="user-info">
+                    <div class="user-avatar">MA</div>
+                    <div class="user-name" data-i18n="user_name">Mehmet Aydın</div>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <a href="#"><i class="fas fa-user"></i> <span data-i18n="profile">Profilim</span></a>
+                    <a href="#"><i class="fas fa-cog"></i> <span data-i18n="settings">Ayarlar</span></a>
+                    <a href="#"><i class="fas fa-bell"></i> <span data-i18n="notifications">Bildirimler</span></a>
+                    <a href="#"><i class="fas fa-sign-out-alt"></i> <span data-i18n="logout">Çıkış Yap</span></a>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- Main Content -->
     <div class="main-content">
-        <div class="page-header">
+        <!-- <div class="page-header">
             <h1>Dashboard</h1>
             <ul class="breadcrumb">
                 <li>Ana Sayfa</li>
                 <li>Dashboard</li>
             </ul>
-        </div>
+        </div> -->
 
         <div class="stats-cards">
             <div class="stat-card">
@@ -95,7 +107,7 @@
                 </div>
                 <div class="stat-info">
                     <h3>1,254</h3>
-                    <p>Toplam Kullanıcı</p>
+                    <p data-i18n="total_users">Toplam Kullanıcı</p>
                 </div>
             </div>
             <div class="stat-card">
@@ -104,7 +116,7 @@
                 </div>
                 <div class="stat-info">
                     <h3>524</h3>
-                    <p>Yeni Siparişler</p>
+                    <p data-i18n="new_orders">Yeni Siparişler</p>
                 </div>
             </div>
             <div class="stat-card">
@@ -113,7 +125,7 @@
                 </div>
                 <div class="stat-info">
                     <h3>₺24,580</h3>
-                    <p>Toplam Gelir</p>
+                    <p data-i18n="total_revenue">Toplam Gelir</p>
                 </div>
             </div>
             <div class="stat-card">
@@ -122,7 +134,7 @@
                 </div>
                 <div class="stat-info">
                     <h3>8</h3>
-                    <p>Bekleyen İşlemler</p>
+                    <p data-i18n="pending_processes">Bekleyen İşlemler</p>
                 </div>
             </div>
         </div>
@@ -131,18 +143,18 @@
             <div class="left-column">
                 <div class="card">
                     <div class="card-header">
-                        <h2>Son Siparişler</h2>
-                        <a href="#">Tümünü Gör</a>
+                        <h2 data-i18n="recent_orders">Son Siparişler</h2>
+                        <a href="#" data-i18n="view_all">Tümünü Gör</a>
                     </div>
                     <table>
                         <thead>
                             <tr>
-                                <th>Sipariş No</th>
-                                <th>Müşteri</th>
-                                <th>Tarih</th>
-                                <th>Miktar</th>
-                                <th>Durum</th>
-                                <th>İşlemler</th>
+                                <th data-i18n="order_no">Sipariş No</th>
+                                <th data-i18n="customer">Müşteri</th>
+                                <th data-i18n="date">Tarih</th>
+                                <th data-i18n="amount">Miktar</th>
+                                <th data-i18n="status">Durum</th>
+                                <th data-i18n="actions">İşlemler</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -306,15 +318,16 @@
             <div class="confirm-icon">
                 <i class="fas fa-exclamation-triangle"></i>
             </div>
-            <h2>Silmeyi Onayla</h2>
-            <p id="deleteMessage">Bu kaydı silmek istediğinize emin misiniz?</p>
+            <h2 data-i18n="confirm_delete">Silmeyi Onayla</h2>
+            <p id="deleteMessage" data-i18n="delete_message">Bu kaydı silmek istediğinize emin misiniz?</p>
             <div class="modal-footer">
-                <button type="button" class="btn-cancel" id="deleteCancelBtn">İptal</button>
-                <button type="button" class="btn-delete-confirm">Evet, Sil</button>
+                <button type="button" class="btn-cancel" id="deleteCancelBtn" data-i18n="cancel">İptal</button>
+                <button type="button" class="btn-delete-confirm" data-i18n="yes_delete">Evet, Sil</button>
             </div>
         </div>
     </div>
 
+    <script src="languages.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

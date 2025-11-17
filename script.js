@@ -17,14 +17,41 @@ document.getElementById('toggleSidebar').addEventListener('click', function() {
     const sidebar = document.querySelector('.sidebar');
     const topbar = document.querySelector('.topbar');
     const mainContent = document.querySelector('.main-content');
+    const body = document.body;
+    const isMobile = window.innerWidth <= 768;
     
-    sidebar.classList.toggle('collapsed');
-    topbar.classList.toggle('sidebar-collapsed');
-    mainContent.classList.toggle('sidebar-collapsed');
+    if (isMobile) {
+        // Mobile: Toggle body class to show/hide sidebar overlay
+        body.classList.toggle('sidebar-open');
+    } else {
+        // Desktop: Toggle collapsed state
+        sidebar.classList.toggle('collapsed');
+        topbar.classList.toggle('sidebar-collapsed');
+        mainContent.classList.toggle('sidebar-collapsed');
+        
+        // Store preference
+        const isCollapsed = sidebar.classList.contains('collapsed');
+        localStorage.setItem('sidebarCollapsed', isCollapsed);
+    }
+});
+
+// Close sidebar on backdrop click (mobile)
+const sidebarBackdrop = document.getElementById('sidebarBackdrop');
+if (sidebarBackdrop) {
+    sidebarBackdrop.addEventListener('click', function() {
+        document.body.classList.remove('sidebar-open');
+    });
+}
+
+// Close sidebar on outside click (mobile)
+document.addEventListener('click', function(event) {
+    const sidebar = document.querySelector('.sidebar');
+    const toggleBtn = document.getElementById('toggleSidebar');
+    const isMobile = window.innerWidth <= 768;
     
-    // Store preference
-    const isCollapsed = sidebar.classList.contains('collapsed');
-    localStorage.setItem('sidebarCollapsed', isCollapsed);
+    if (isMobile && !sidebar.contains(event.target) && !toggleBtn.contains(event.target)) {
+        document.body.classList.remove('sidebar-open');
+    }
 });
 
 // Toggle User Dropdown
@@ -170,9 +197,15 @@ document.getElementById('editForm').addEventListener('submit', function(e) {
     e.preventDefault();
     
     const modal = document.getElementById('editModal');
-    const row = modal.dataset.currentRow ? 
-        document.querySelector(`tr:has(td:contains("${document.getElementById('orderId').value}"))`) :
-        null;
+    const orderId = document.getElementById('orderId').value;
+    
+    // Find the row with matching order ID
+    let row = null;
+    document.querySelectorAll('tbody tr').forEach(tr => {
+        if (tr.cells[0].textContent.trim() === orderId) {
+            row = tr;
+        }
+    });
     
     if (row) {
         // Update row with form data
@@ -183,7 +216,25 @@ document.getElementById('editForm').addEventListener('submit', function(e) {
         const statusElement = row.cells[4].querySelector('.status');
         const newStatus = document.getElementById('orderStatus').value;
         statusElement.textContent = newStatus;
-        statusElement.className = 'status ' + (newStatus === 'Tamamlandı' ? 'active' : 'pending');
+        
+        let statusClass = '';
+        if (newStatus === 'Tamamlandı') {
+            statusClass = 'active';
+        } else if (newStatus === 'Beklemede') {
+            statusClass = 'pending';
+        } else if (newStatus === 'İptal') {
+            statusClass = 'cancelled';
+        }
+        
+        statusElement.className = 'status ' + statusClass;
+        
+        // Add highlight animation
+        row.classList.add('highlight-update');
+        
+        // Remove highlight after 1 second
+        setTimeout(() => {
+            row.classList.remove('highlight-update');
+        }, 1000);
     }
     
     modal.classList.remove('active');
